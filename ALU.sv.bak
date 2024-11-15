@@ -1,0 +1,17 @@
+ module ALU (
+ input logic [31:0] SrcA,
+ input logic [31:0] SrcB,
+ // First operand
+ // Second operand
+ input logic [2:0] ALUControl, // ALU control signal
+output logic [31:0] ALUResult // ALU result
+ );
+ always_comb begin
+ case (ALUControl)
+ 3'b010: ALUResult = SrcA + SrcB; // ADD operation
+ 3'b110: ALUResult = SrcA- SrcB; // SUB operation
+ default: ALUResult = 32'b0;
+ // Default case
+ endcase
+ end
+ endmodule
